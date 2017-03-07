@@ -45,6 +45,33 @@ void printPlayerFeild(char playerFeild[10][10]){
 	std::cout<<std::endl;
 }
 
+void placeShip(int x, int y, std::string direction, int ship, char playerFeild[10][10]){
+	if((direction == "up" || direction == "Up") && y > 0){
+
+		for(int i=0; i<ship; i++){
+			playerFeild[x][y] = 'O';
+			y--;
+		}
+	}else if((direction == "down" || direction == "Down") && y < 9){
+		for(int i=0; i<ship; i++){
+			playerFeild[x][y] = 'O';
+			y++;
+		}
+	}else if((direction == "right" || direction == "Right") && x < 9){
+		for(int i=0; i<ship; i++){
+			playerFeild[x][y] = 'O';
+			x++;	
+		}
+	}else if((direction == "left" || direction == "Left") && x > 0){
+		for(int i=0; i<ship; i++){
+			playerFeild[x][y] = 'O';
+			x--;
+		}
+	}else{
+		std::cout<<"[Error : Invalid x and y points]";
+	}
+}
+
 int charToInt(char xChar){
 	int x;
 

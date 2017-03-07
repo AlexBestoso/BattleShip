@@ -2,6 +2,8 @@
 #include <string.h>
 #include "functions.h"
 
+
+
 int main(){
 	std::string direction;
 
@@ -19,8 +21,11 @@ int main(){
 
 	//Format battle fields:
 	makeFeild(playerFeild, aiFeild);
-	
+
+
+	/*Place players Ships*/
 	//Print player's battle field:	
+	system("clear");
 	printPlayerFeild(playerFeild);
 	
 	//Gather information: 
@@ -32,29 +37,49 @@ int main(){
 	std::cin>> direction;
 	y = charToInt(xChar);
 
-	if(direction == "up" || direction == "Up"){
-		for(int i=0; i<battleship; i++){
-			playerFeild[x][y] = 'O';
-			y--;
-		}
-	}else if(direction == "down" || direction == "Down"){
-		for(int i=0; i<battleship; i++){
-			playerFeild[x][y] = 'O';
-			y++;
-		}
-	}else if(direction == "right" || direction == "Right"){
-		for(int i=0; i<battleship; i++){
-			playerFeild[x][y] = 'O';
-			x++;	
-		}
-	}else if(direction == "left" || direction == "Left"){
-		for(int i=0; i<battleship; i++){
-			playerFeild[x][y] = 'O';
-			x--;
-		}
-	}else{
-		std::cout<<"[Error : Invalid x and y points]";
-	}
+	//Place Battleship:
+	system("clear");
+	placeShip(x, y, direction, battleship, playerFeild);
 	printPlayerFeild(playerFeild);
+
+	std::cout<<"\nPlace Destroyer~\nLetter: ";	
+	std::cin>> xChar;
+	std::cout<<"Number: ";
+	std::cin>> x;
+	std::cout<<"What direction?\n left, right, up, down: ";
+	std::cin>> direction;
+	y = charToInt(xChar);
+
+	//Place Destroyer:
+	system("clear");
+	placeShip(x, y, direction, destroyer, playerFeild);
+	printPlayerFeild(playerFeild);
+
+	std::cout<<"\nPlace Submarine~\nLetter: ";
+	std::cin>> xChar;
+	std::cout<<"Number: ";
+	std::cin>> x;
+	std::cout<<"What direction?\n left, right, up, down: ";
+	std::cin>> direction;
+	y = charToInt(xChar);
+
+	//Place Submarine
+	system("clear");
+	placeShip(x, y, direction, submarine, playerFeild);
+	printPlayerFeild(playerFeild);
+
+	std::cout<<"\nPlace Patrole~\nLetter: ";	
+	std::cin>> xChar;
+	std::cout<<"Number: ";
+	std::cin>> x;
+	std::cout<<"What direction?\n left, right, up, down: ";
+	std::cin>> direction;
+	y = charToInt(xChar);
+
+	//Place Patrole:
+	system("clear");
+	placeShip(x, y, direction, patrole, playerFeild);
+	printPlayerFeild(playerFeild);
+
 	return 0;
 }
